@@ -1,7 +1,7 @@
 ﻿function Export-WinEventLogs {
 #.SYNOPSIS
 # Export Windows Event Logs to a format ingestible by Security Onion (.evtx)
-# ARBITRARY VERSION NUMBER:  1.5.6
+# ARBITRARY VERSION NUMBER:  1.5.7
 # AUTHOR:  Tyler McCann (@tylerdotrar)
 #
 #.DESCRIPTION
@@ -10,7 +10,7 @@
 # Public Documents directory (%PUBLIC%\Documents).
 #
 # Attempts to export the following logsets by default:
-# 	"Application",
+#   "Application",
 #   "System",
 #   "Security",
 #   "Microsoft-Windows-Sysmon/Operational",
@@ -73,8 +73,11 @@
 
     # Context for what is being Captured
     $ContextName = $Context.Replace(' ','-')
+
 	if (!$OutputDir) { $OutputDir   = "$env:PUBLIC\Documents\Evtx_$ContextName" }
-    New-Item -Path $OutputDir -ItemType Directory | Out-Null
+    else { $OutputDir += "\Evtx_$ContextName" }
+
+    New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null
 
 
     # Iterate through all log types with unique names
