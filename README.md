@@ -2,7 +2,8 @@
 Export Windows Event Logs to a format ingestible by Security Onion (.evtx)
 
 ## Description
-Exports Windows Event Logs to an archive, which can then be exported to different SIEMs and SecurityOnion solutions.
+Exports Windows Event Logs to an archive, which can then be exported to different SIEMs and Security Onion solutions.
+This niche tool was written for scenarios where logs needed to be stored and moved to external SIEM's not reachable by the target.
 
 Parameters:
 ```
@@ -15,7 +16,7 @@ Parameters:
 
 Defaults:
 - Exports logs to the Public Documents directory (``%PUBLIC%\Documents``)
-- Exports the the last 30 minutes of logs.
+- Exports the last 30 minutes of logs.
 - Attempts to export the following logsets:
   - "Application",
   - "System",
@@ -28,7 +29,7 @@ Defaults:
 ## Usage
 ```powershell
 # Below example will create a labeled .zip in containing the last 45 minutes of logs
-export-evtx -Context 'Github Showcase -Offset 45 -OutputDir .\Examples
+export-evtx -Context 'Github Showcase' -Offset 45 -OutputDir .\Examples
 ```
 ![Usage](https://cdn.discordapp.com/attachments/855920119292362802/1086422635778429049/image.png)
 
